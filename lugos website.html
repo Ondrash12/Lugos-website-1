@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lugo's Mexican Restaurant - Authentic Jalisco Cuisine</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        :root {
+            --primary: #2C5AA0; /* SOFTER BLUE */
+            --secondary: #2C5AA0; /* CHANGED TO BLUE */
+            --accent: #006400;
+            --light: #FFFFFF;
+            --dark: #333;
+            --text: #222;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: #666; /* Neutral color instead of accent */
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #1a4780; /* Darker blue */
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Menu Section */
+        .menu {
+            background-color: white;
+        }
+        
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-category {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .menu-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .menu-items {
+            list-style: none;
+        }
+        
+        .menu-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .menu-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Catering Section */
+        .catering-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .catering-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .catering-options {
+            margin-top: 30px;
+        }
+        
+        .catering-option {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary); /* NOW BLUE */
+        }
+        
+        .catering-option h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #D4AF37; /* Keeping gold for footer headings */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Lugo's <span>Mexican Restaurant</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#catering">Catering</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Authentic Mexican Food from Jalisco, Mexico</h1>
+            <p>Serving the Upper Thumb area since 2020 with delicious food and a welcoming atmosphere.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn">View Menu</a>
+                <a href="#catering" class="btn btn-outline">Order Catering</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Our story of bringing authentic Mexican flavors to Michigan</p>
+            </div>
+            <div class="about-content">
+                <p>Lugo's is a family-owned restaurant bringing authentic recipes from Jalisco, Mexico, to Michigan. Since opening our first location in Bad Axe in 2020, we've expanded to Caro and Sandusky, with a fourth location coming soon to Harbor Beach.</p>
+                <p>Our success is built on authentic family recipes and a welcoming atmosphere that keeps people coming back. We've grown thanks to our delicious food and the comfort found in authentic Mexican cuisine.</p>
+                <p>Now serving the Upper Thumb area with the true taste of Jalisco, Mexico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+                <p>Authentic Mexican dishes made with family recipes</p>
+            </div>
+            <div class="menu-categories">
+                <div class="menu-category">
+                    <h3>Starters</h3>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <h4>Guacamole & Chips</h4>
+                            <p>Fresh avocado dip with homemade tortilla chips</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Queso Fundido</h4>
+                            <p>Melted cheese with chorizo and peppers</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Street Corn (Elote)</h4>
+                            <p>Grilled corn with mayo, cheese, and chili powder</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-category">
+                    <h3>Main Dishes</h3>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <h4>Carne Asada Tacos</h4>
+                            <p>Grilled steak tacos with onions, cilantro, and salsa</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Chicken Enchiladas</h4>
+                            <p>Rolled tortillas with chicken, covered in red sauce</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Chiles Rellenos</h4>
+                            <p>Poblano peppers stuffed with cheese and meat</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Mole Poblano</h4>
+                            <p>Chicken in rich chocolate-chili sauce</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-category">
+                    <h3>Desserts</h3>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <h4>Flan</h4>
+                            <p>Classic caramel custard dessert</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Churros</h4>
+                            <p>Fried dough pastries with cinnamon sugar</p>
+                        </li>
+                        <li class="menu-item">
+                            <h4>Tres Leches Cake</h4>
+                            <p>Sponge cake soaked in three milks</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
+    <section class="section" id="catering">
+        <div class="container">
+            <div class="section-title">
+                <h2>Catering Services</h2>
+                <p>Bring authentic Mexican flavors to your next event</p>
+            </div>
+            <div class="catering-content">
+                <p>Looking to make your next event special? Lugo's offers catering with authentic Mexican flavors. Contact us to customize your menu for parties, corporate events, weddings, and community gatherings.</p>
+                <p>We work with you to create the perfect menu that fits your needs and budget while bringing the true taste of Jalisco to your celebration.</p>
+                
+                <div class="catering-options">
+                    <div class="catering-option">
+                        <h4>Taco Bar</h4>
+                        <p>Choice of meats, fresh toppings, tortillas, and salsas</p>
+                    </div>
+                    <div class="catering-option">
+                        <h4>Fajita Station</h4>
+                        <p>Sizzling fajitas with peppers, onions, and warm tortillas</p>
+                    </div>
+                    <div class="catering-option">
+                        <h4>Combination Platters</h4>
+                        <p>Variety of our most popular dishes for larger groups</p>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn" style="margin-top: 20px;">Request Catering Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Visit us or get in touch for catering inquiries</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Our Locations</h3>
+                    <p><strong>Bad Axe</strong><br>123 Main Street, Bad Axe, MI<br>(989) 555-1234</p>
+                    <p><strong>Caro</strong><br>456 Center Ave, Caro, MI<br>(989) 555-5678</p>
+                    <p><strong>Sandusky</strong><br>789 West Street, Sandusky, MI<br>(810) 555-9012</p>
+                    <p><strong>Harbor Beach</strong><br>Coming Soon! 321 State Street</p>
+                    
+                    <h3>Hours</h3>
+                    <p>Monday - Sunday: 11am - 9pm</p>
+                    
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TT</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Lugo's Mexican Restaurant</h3>
+                    <p>Bringing authentic Jalisco flavors to Michigan since 2020.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#catering">Catering</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>Main: (989) 555-LUGO</li>
+                        <li>Catering: (989) 555-CATER</li>
+                        <li>info@lugosmexican.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Lugo's Mexican Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
